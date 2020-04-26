@@ -5,7 +5,6 @@ const mongoose = require("mongoose");
 const PORT = process.env.PORT || 5000;
 
 const db = require("./models");
-
 const app = express();
 
 app.use(logger("dev"));
@@ -20,6 +19,8 @@ useUnifiedTopology: true ,
 useFindAndModify: false
 });
 
+require("./routes/apiRoutes")(app);
+require("./routes/htmlRoutes")(app);
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
