@@ -21,7 +21,7 @@ module.exports = function (app) {
                 .then(data => res.json(data))
                 .catch(err => {
                     console.log("err", err)
-                    res.json(err)
+                    res.status(400).json(err)
                 })
         });
     app.post('/api/workouts', ({ body }, res) => {
@@ -29,7 +29,7 @@ module.exports = function (app) {
             .then(dbWorkout => {
                 res.json(dbWorkout)
             }).catch(err => {
-                res.json(err)
+                res.status(400).json(err)
             })
     })
     app.get("/api/workouts/range", (req, res) => {
